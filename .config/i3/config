@@ -1,0 +1,9 @@
+# https://i3wm.org/docs/userguide.html
+include hotkeys
+exec --no-startup-id warpd
+exec --no-startup-id redshift -O 4000
+exec --no-startup-id picom
+default_border pixel 1
+#bar {
+#    swaybar_command swaybar
+#}
