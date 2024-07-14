@@ -8,6 +8,7 @@ paths=(
 	"/etc/X11/xorg.conf"
 	"$HOME/.config/i3/config"
 	"$HOME/.xinitrc"
+    "$HOME/.config/hypr/hyprland.conf"
 )
 
 
