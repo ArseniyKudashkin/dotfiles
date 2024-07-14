@@ -1,10 +1,4 @@
-#
-# ~/.bashrc
-#
-
-export LC_TIME="ru_RU.UTF-8"
-
-date +%H:%M:%S,\ %d\|%m\|%y,\ %A
+date +%H:%M:%S,\ %d\|%m\|%y
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
