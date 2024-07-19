@@ -1,4 +1,4 @@
-date +%H:%M:%S,\ %d\|%m\|%y
+date +%H:%M:%S,\ %d\|%m\|%y && python3 $HOME/code/msg/fetchmsg.py
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -16,5 +16,5 @@ alias \
 	dm='~/dm.sh' \
 	ms='~/ms.sh' \
 
-PS1='[\u@\h \W]\$ '
 set -o vi
+PS1='[\u@\h \W]\$ '
