@@ -9,13 +9,13 @@ floating_modifier $mod
 # VISUAL
 default_border pixel 1
 
-
 exec --no-startup-id warpd
 exec --no-startup-id redshift -O 4000
 exec --no-startup-id xrandr --output HDMI-0 --mode 1920x1080 --same-as DP-0
 exec_always --no-startup-id feh --bg-fill "$HOME/creation/vim.png"
 exec_always --no-startup-id picom
-
+exec firefox
+exec obsidian
 
 # LAUNCH KEYBINDS
 bindsym $mod+d exec alacritty --class "sway-launcher" -e sway-launcher-desktop
