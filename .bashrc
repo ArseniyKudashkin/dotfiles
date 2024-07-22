@@ -1,4 +1,4 @@
-date +%H:%M:%S,\ %d\|%m\|%y && python3 $HOME/code/msg/fetchmsg.py
+date +%H:%M:%S,\ %d\|%m\|%y
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return

@@ -9,6 +9,7 @@ paths=(
 	"$HOME/.config/i3/config"
 	"$HOME/.xinitrc"
     "$HOME/.config/hypr/hyprland.conf"
+    "$HOME/.config/nvim/cheatsheet.txt"
 )
 
 
