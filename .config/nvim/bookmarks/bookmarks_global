@@ -1,0 +1,13 @@
+
+require("bookmarks.list").load{
+	filename = "/home/ikillmylinux/.config/nvim/init.lua",
+    fre = 2,
+    tags = "",
+    description = "gfgdf",
+    is_global = true,
+    line_md5 = "7b5f245e406017ee95fe715a11cc030c",
+    rows = 120,
+    id = "e9e79f0244577cc8d1035b0d159bc82a",
+    line = 103,
+    updated_at = 1721635388,
+}
