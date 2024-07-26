@@ -10,11 +10,9 @@ paths=(
 	"$HOME/.xinitrc"
     "$HOME/.config/hypr/hyprland.conf"
     "$HOME/.config/nvim/cheatsheet.txt"
-    "$HOME/.config/nvim/bookmarks/_home_ikillmylinux"
-    "$HOME/.config/nvim/bookmarks/_home_ikillmylinux_.config_nvim"
-    "$HOME/.config/nvim/bookmarks/bookmarks_global"
+    "$HOME/.config/ranger/rc.conf"
+    "$HOME/.config/nvim/bookmarks.db.json"
 )
-
 
 main()
 {

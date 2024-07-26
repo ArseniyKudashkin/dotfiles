@@ -15,6 +15,9 @@ alias \
 	gits='git status --untracked-files=no' \
 	dm='~/dm.sh' \
 	ms='~/ms.sh' \
+    vis="sudo -E nvim" \
+    vin="nvim ~/openNotes/Ar/000Arseniy\'s\ page.md"
+
 
 set -o vi
 PS1='[\u@\h \W]\$ '

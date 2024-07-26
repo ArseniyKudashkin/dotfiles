@@ -10,8 +10,8 @@ floating_modifier $mod
 default_border pixel 1
 
 exec --no-startup-id warpd
-exec --no-startup-id redshift -O 4000
-exec --no-startup-id xrandr --output HDMI-0 --mode 1920x1080 --same-as DP-0
+exec_always --no-startup-id redshift -O 4000
+#exec_always --no-startup-id xrandr --output HDMI-0 --mode 1920x1080 --same-as DP-0
 exec_always --no-startup-id feh --bg-fill "$HOME/creation/vim.png"
 exec_always --no-startup-id picom
 exec firefox
@@ -24,6 +24,7 @@ bindsym $mod+e exec alacritty -e ranger
 bindsym $mod+z exec obsidian
 bindsym $mod+b exec firefox
 bindsym $mod+m exec alacritty --class "musikcube" -e musikcube
+bindsym $mod+Shift+z exec zoomx
 
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
