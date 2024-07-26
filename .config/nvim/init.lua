@@ -13,6 +13,7 @@ vim.wo.conceallevel = 2
 vim.api.nvim_set_keymap('n', '<F5>', ':CheatsheetEdit<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>o', ':ObsidianQuickSwitch<CR>', {})
 vim.api.nvim_set_keymap('n', '<leader>s', ':ObsidianSearch<CR>', {})
+vim.api.nvim_set_keymap('n', '<C-Space>', ':ObsidianToggleCheckbox<CR>', { noremap = true, silent = true })
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -48,8 +49,8 @@ require("lazy").setup({
     "epwalsh/obsidian.nvim",
     "LintaoAmons/bookmarks.nvim",
     "stevearc/dressing.nvim",
-},
-
+    "nvim-tree/nvim-tree.lua",
+    },
   install = { colorscheme = { "habamax" } },
   checker = { enabled = false },
 })
@@ -60,7 +61,7 @@ global_note.setup({
     directory = "~/openNotes/Ar/",
 })
 
-vim.keymap.set("n", "<leader>n", global_note.toggle_note, {
+vim.keymap.set("n", "<leader>t", global_note.toggle_note, {
   desc = "Toggle global note",
 })
 
@@ -69,50 +70,6 @@ require("cheatsheet").setup({
     bundled_plugin_cheatsheets = false,
     include_only_installed_plugins = false,
 })
-
--- require("telescope").load_extension("bookmarks")
--- require("bookmarks").setup({
---     storage_dir = "/home/ikillmylinux/.config/nvim/bookmarks",
---     mappings_enabled = true,
---     keymap = {
---         toggle = "<tab><tab>",
---         close = "q",
---         add = "\\z",
---         add_global = "\\g", -- Add global bookmarks(global keymap), global bookmarks will appear in all projects. Identified with the symbol '󰯾'
---         jump = "<CR>", -- Jump from bookmarks(buf keymap)
---         delete = "dd", -- Delete bookmarks(buf keymap)
---         order = "<space><space>", -- Order bookmarks by frequency or updated_time(buf keymap)
---         delete_on_virt = "\\dd", -- Delete bookmark at virt text line(global keymap)
---         show_desc = "\\sd", -- show bookmark desc(global keymap)
---         focus_tags = "<c-j>",      -- focus tags window
---         focus_bookmarks = "<c-k>", -- focus bookmarks window
---         toogle_focus = "<S-Tab>", -- toggle window focus (tags-window <-> bookmarks-window)
---     },
---     width = 0.8, -- Bookmarks window width:  (0, 1]
---     height = 0.7, -- Bookmarks window height: (0, 1]
---     preview_ratio = 0.45, -- Bookmarks preview window ratio (0, 1]
---     tags_ratio = 0.1, -- Bookmarks tags window ratio
---     fix_enable = false, -- If true, when saving the current file, if the bookmark line number of the current file changes, try to fix it.
---
---     virt_text = "", -- Show virt text at the end of bookmarked lines, if it is empty, use the description of bookmarks instead.
---     sign_icon = "󰃃",                                           -- if it is not empty, show icon in signColumn.
---     virt_pattern = { "*.go", "*.lua", "*.sh", "*.php", "*.rs" }, -- Show virt text only on matched pattern
---     virt_ignore_pattern = {}, -- Ignore showing virt text on matched pattern, this works after virt_pattern
---     border_style = "single", -- border style: "single", "double", "rounded" 
---     hl = {
---         border = "TelescopeBorder", -- border highlight
---         cursorline = "guibg=Gray guifg=White", -- cursorline highlight
---     },
---     datetime_format = "%Y-%m-%d %H:%M:%S", -- os.date
---     -- •	%Y: Four-digit year
---     -- •	%m: Two-digit month (01 to 12)
---     -- •	%d: Two-digit day (01 to 31)
---     -- •	%H: Hour in 24-hour format (00 to 23)
---     -- •	%I: Hour in 12-hour format (01 to 12)
---     -- •	%M: Two-digit minute (00 to 59)
---     -- •	%S: Two-digit second (00 to 59)
---     -- •	%p: AM/PM indicator
--- })
 
 require('codestats-nvim').setup({
     token = "SFMyNTY.WlhabGNubGtZWGxwYTJsc2JHMTViR2x1ZFhnPSMjTWpNeE56Yz0.u-K565NaEapeZ7km1TvjUFlyOX7q9beFuIzrNlVqv8o",
@@ -182,8 +139,44 @@ require("obsidian").setup({
 })
 
 require("bookmarks").setup({})
+require("nvim-tree").setup({
+  sort = {
+    sorter = "case_sensitive",
+  },
+  view = {
+    width = 20,
+  },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
+  },
+})
 
+vim.keymap.set({ "n", "v" }, "<leader>e", "<cmd>NvimTreeToggle<cr>", {})
 vim.keymap.set({ "n", "v" }, "mm", "<cmd>BookmarksMark<cr>", { desc = "Mark current line into active BookmarkList." })
 vim.keymap.set({ "n", "v" }, "mo", "<cmd>BookmarksGoto<cr>", { desc = "Go to bookmark at current active BookmarkList" })
 vim.keymap.set({ "n", "v" }, "ma", "<cmd>BookmarksCommands<cr>", { desc = "Find and trigger a bookmark command." })
 vim.keymap.set({ "n", "v" }, "mg", "<cmd>BookmarksGotoRecent<cr>", { desc = "Go to latest visited/created Bookmark" })
+
+local markdown_dir = "/home/ikillmylinux/openNotes/Ar"
+local function open_random_markdown_file()
+  local markdown_files = {}
+
+  for _, file in ipairs(vim.fn.readdir(markdown_dir)) do
+    if vim.fn.fnamemodify(file, ":e") == "md" then
+      table.insert(markdown_files, file)
+    end
+  end
+
+  if #markdown_files == 0 then
+    print("No Markdown files found in the directory.")
+    return
+  end
+
+  local random_file = markdown_files[math.random(#markdown_files)]
+  vim.cmd("edit " .. markdown_dir .. "/" .. random_file)
+end
+
+vim.keymap.set("n", "<leader>m", open_random_markdown_file, { silent = true })
