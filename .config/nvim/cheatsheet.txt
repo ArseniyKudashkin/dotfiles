@@ -1,5 +1,7 @@
 
 
 ##Notes
-Search-open note|
-Search-open note by content|
+Search by name|
+Search by content|
+Cycle checkbox             |
+Random note                |
