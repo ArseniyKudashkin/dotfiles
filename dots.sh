@@ -9,9 +9,11 @@ paths=(
 	"$HOME/.config/i3/config"
 	"$HOME/.xinitrc"
     "$HOME/.config/hypr/hyprland.conf"
-    "$HOME/.config/nvim/cheatsheet.txt"
     "$HOME/.config/ranger/rc.conf"
     "$HOME/.config/nvim/bookmarks.db.json"
+    "$HOME/.config/nvim/snippets/markdown.json"
+    "$HOME/.config/nvim/snippets/package.json"
+
 )
 
 main()

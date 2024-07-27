@@ -1,7 +1,0 @@
-
-
-##Notes
-Search by name|
-Search by content|
-Cycle checkbox             |
-Random note                |

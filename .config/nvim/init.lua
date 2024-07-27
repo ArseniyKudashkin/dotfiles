@@ -7,12 +7,25 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.list = true
 vim.opt.swapfile = false
+vim.g.markdown_fenced_languages = {'python', 'cpp', 'c', 'lua', 'bash'}
 vim.opt.clipboard = "unnamedplus"
 vim.opt.fillchars = { eob = " " }
 vim.opt.termguicolors = true
 vim.wo.conceallevel = 2
 vim.api.nvim_set_keymap('n', '<F5>', ':CheatsheetEdit<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-Space>', ':Telekasten toggle_todo<CR>', { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>f", "<cmd>Telekasten find_notes<CR>")   -- by name
+vim.keymap.set("n", "<leader>g", "<cmd>Telekasten search_notes<CR>") -- by content
+vim.keymap.set("n", "<CR>",       "<cmd>Telekasten follow_link<CR>")
+vim.keymap.set("n", "<leader>n", "<cmd>Telekasten new_note<CR>")
+vim.keymap.set("n", "<leader>zb", "<cmd>Telekasten show_backlinks<CR>")
+vim.keymap.set("n", "<leader>zI", "<cmd>Telekasten insert_img_link<CR>")
+vim.keymap.set("n", "<F2>", "<cmd>Telekasten rename_note<CR>")
+vim.keymap.set("n", "<leader>y", "<cmd>Telekasten yank_notelink<CR>")
+
+vim.keymap.set("n", "<F1>", "<cmd>WhichKey<CR>")
+vim.keymap.set("i", "[[", "<cmd>Telekasten insert_link<CR>")
+
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -52,11 +65,16 @@ require("lazy").setup({
     "nvim-telekasten/telekasten.nvim",
     'koalhack/koalight.nvim',
     "startup-nvim/startup.nvim",
+    "kylechui/nvim-surround",
+    "chrisgrieser/nvim-scissors",
+    "L3MON4D3/LuaSnip",
+    'hrsh7th/nvim-cmp',
+    'saadparwaiz1/cmp_luasnip',
     },
   install = { colorscheme = { "habamax" } },
   checker = { enabled = false },
 })
--- there
+
 
 
 local global_note = require("global-note")
@@ -127,22 +145,60 @@ end
 
 vim.keymap.set("n", "<leader>m", open_random_markdown_file)
 
--- Most used functions
-vim.keymap.set("n", "<leader>zf", "<cmd>Telekasten find_notes<CR>")
-vim.keymap.set("n", "<leader>zg", "<cmd>Telekasten search_notes<CR>")
-vim.keymap.set("n", "<leader>zd", "<cmd>Telekasten goto_today<CR>")
-vim.keymap.set("n", "<leader>zz", "<cmd>Telekasten follow_link<CR>")
-vim.keymap.set("n", "<leader>zn", "<cmd>Telekasten new_note<CR>")
-vim.keymap.set("n", "<leader>zc", "<cmd>Telekasten show_calendar<CR>")
-vim.keymap.set("n", "<leader>zb", "<cmd>Telekasten show_backlinks<CR>")
-vim.keymap.set("n", "<leader>zI", "<cmd>Telekasten insert_img_link<CR>")
-vim.keymap.set("n", "<F1>", "<cmd>WhichKey<CR>")
-vim.keymap.set("i", "[[", "<cmd>Telekasten insert_link<CR>")
 
 vim.api.nvim_create_user_command('Ltx', function()
   require"nabla".enable_virt()
   print("psshh. LATEX preview")
 end, {})
 vim.cmd.colorscheme 'koalight'
-
 require"startup".setup()
+require("nvim-surround").setup()
+require("scissors").setup({
+    snippetDir = "/home/ikillmylinux/.config/nvim/snippets",
+})
+
+require("luasnip").setup {
+	store_selection_keys = "<Tab>",
+}
+require("luasnip.loaders.from_vscode").lazy_load {
+	paths = { "/home/ikillmylinux/.config/nvim/snippets" },
+}
+local cmp = require'cmp'
+cmp.setup({
+    sources = {
+        { name = "luasnip" },
+    },
+    mapping = {
+        ["<CR>"] = cmp.mapping.confirm { select = true },
+        ["<Tab>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_next_item()
+          elseif luasnip.expand_or_jumpable() then
+            luasnip.expand_or_jump()
+          elseif has_words_before() then
+            cmp.complete()
+          else
+            fallback()
+          end
+        end, { "i", "s" }),
+
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_prev_item()
+          elseif luasnip.jumpable(-1) then
+            luasnip.jump(-1)
+          else
+            fallback()
+          end
+        end, { "i", "s" }),
+        },
+    snippet = {
+        expand = function(args)
+            local luasnip = prequire("luasnip")
+            if not luasnip then
+                return
+            end
+            luasnip.lsp_expand(args.body)
+        end,
+    },
+})
