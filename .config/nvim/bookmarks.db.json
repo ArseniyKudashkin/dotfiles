@@ -63,21 +63,6 @@
           "visited_at": 1722518457
         },
         {
-          "content": "  spec = {",
-          "created_at": 1722414980,
-          "githash": "fatal: not a git repository (or any of the parent directories): .git",
-          "id": 1722414980,
-          "location": {
-            "col": 0,
-            "line": 32,
-            "path": "/home/ikillmylinux/.config/nvim/init.lua",
-            "project_name": "",
-            "relative_path": "home/ikillmylinux/.config/nvim/init.lua"
-          },
-          "name": "nvim config cfg vic",
-          "visited_at": 1722523413
-        },
-        {
           "content": "# [env]",
           "created_at": 1722521476,
           "githash": "fatal: not a git repository (or any of the parent directories): .git",
@@ -91,6 +76,21 @@
           },
           "name": "alacritty terminal term",
           "visited_at": 1722525706
+        },
+        {
+          "content": "  spec = {",
+          "created_at": 1722414980,
+          "githash": "fatal: not a git repository (or any of the parent directories): .git",
+          "id": 1722414980,
+          "location": {
+            "col": 0,
+            "line": 32,
+            "path": "/home/ikillmylinux/.config/nvim/init.lua",
+            "project_name": "",
+            "relative_path": "home/ikillmylinux/.config/nvim/init.lua"
+          },
+          "name": "nvim config cfg vic",
+          "visited_at": 1722525893
         }
       ],
       "id": "2024072612062908681293",

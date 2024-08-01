@@ -13,6 +13,7 @@ paths=(
     "$HOME/.config/nvim/bookmarks.db.json"
     "$HOME/.config/nvim/snippets/markdown.json"
     "$HOME/.config/nvim/snippets/package.json"
+    "$HOME/.config/picom/picom.conf"
 
 )
 
