@@ -1,0 +1,10 @@
+# [env]
+# WINIT_X11_SCALE_FACTOR = "50"
+
+[font]
+size = 11
+normal = { family = "Terminess Nerd Font"}
+# bold = { style = "Bold" }
+# italic = { style = "Italic" }
+# bold_italic = { style = "Bold Italic" }
+builtin_box_drawing = true

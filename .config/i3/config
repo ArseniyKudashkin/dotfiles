@@ -16,6 +16,7 @@ exec_always --no-startup-id feh --bg-fill "$HOME/creation/vim.png"
 #exec_always --no-startup-id picom
 exec firefox
 exec obsidian
+exec alacritty --class "musikcube" -e musikcube
 
 # LAUNCH KEYBINDS
 bindsym $mod+d exec alacritty --class "sway-launcher" -e sway-launcher-desktop
@@ -24,7 +25,7 @@ bindsym $mod+e exec alacritty -e ranger
 bindsym $mod+z exec obsidian
 bindsym $mod+b exec firefox
 bindsym $mod+m exec alacritty --class "musikcube" -e musikcube
-bindsym $mod+Shift+z exec zoomx
+bindsym $mod+w exec ksnip -r
 
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
@@ -88,6 +89,7 @@ assign     [class="musikcube"         ] 10
 assign     [class="steam"             ] 8
 assign     [class="dota2"             ] 2
 assign     [class="firefox"           ] 4
+assign     [class="obs"               ] 5
 for_window [class="Steam"             ] floating enable
 for_window [title="^Steam Games List$"] floating enable, resize set 20 ppt 50 ppt, $center
 for_window [title="^Steam$"           ] floating enable, resize set 50 ppt 50 ppt, $center

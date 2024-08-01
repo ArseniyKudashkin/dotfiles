@@ -16,7 +16,7 @@ alias \
 	dm='~/dm.sh' \
 	ms='~/ms.sh' \
     vis="sudo -E nvim" \
-    vin="nvim ~/openNotes/Ar/000Arseniy\'s\ page.md" \
+    vin="nvim ~/openNotes/Ar/main.md" \
     vic="nvim ~/.config/nvim/init.lua" \
     1cdnvim="cd /home/ikillmylinux/.config/nvim/" \
     1aliases="nvim /home/ikillmylinux/.bashrc" \
