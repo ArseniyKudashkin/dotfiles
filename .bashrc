@@ -21,6 +21,7 @@ alias \
     1cdnvim="cd /home/ikillmylinux/.config/nvim/" \
     1aliases="nvim /home/ikillmylinux/.bashrc" \
     i3cfg="nvim ~/.config/i3/config" \
+    gety="yay -S" \
 
 
 set -o vi
