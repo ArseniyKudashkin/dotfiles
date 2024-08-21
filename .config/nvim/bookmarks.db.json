@@ -114,7 +114,7 @@
           "id": 1722414980,
           "location": {
             "col": 0,
-            "line": 32,
+            "line": 23,
             "path": "/home/ikillmylinux/.config/nvim/init.lua",
             "project_name": "",
             "relative_path": "home/ikillmylinux/.config/nvim/init.lua"

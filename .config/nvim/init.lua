@@ -60,7 +60,7 @@ require("lazy").setup({
             commit = '03abd2c',
         },
         'mzlogin/vim-markdown-toc',
-        { dir = '/home/ikillmylinux/shitpost.nvim' },
+        { dir = '~/example.nvim' },
         "folke/zen-mode.nvim",
         {
             "toppair/peek.nvim",
@@ -373,7 +373,6 @@ require'nvim-treesitter.configs'.setup {
   auto_install = true,
 }
 
-require('shitpost')
 
 require('render-markdown').setup({
     code = {
@@ -472,3 +471,6 @@ end, {})
 
 
 vim.keymap.set({ "n", "v" }, "<leader>y", "<cmd>CopyLink<cr>", {})
+
+
+require('example')

@@ -7,6 +7,7 @@ floating_modifier $mod
 
 bar{}
 
+
 # VISUAL
 default_border pixel 1
 
@@ -14,7 +15,7 @@ exec --no-startup-id warpd
 exec_always --no-startup-id redshift -x && redshift -O 3500
 #exec_always --no-startup-id xrandr --output HDMI-0 --mode 1920x1080 --same-as DP-0
 exec_always --no-startup-id feh --bg-fill "$HOME/Downloads/another.jpg"
-exec_always --no-startup-id picom
+# exec_always --no-startup-id picom
 exec firefox
 exec obsidian
 exec discord
@@ -28,6 +29,10 @@ bindsym $mod+z exec obsidian
 bindsym $mod+b exec firefox
 bindsym $mod+m exec alacritty --class "musikcube" -e musikcube
 bindsym $mod+w exec ksnip -r
+
+# bindsym $mod+r resize set 1920 1080
+bindsym $mod+r exec i3-msg 'move window absolute position center resize set 1920 1080 border toggle'
+
 
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
@@ -96,6 +101,8 @@ assign     [class="steam"             ] 8
 assign     [class="dota2"             ] 2
 assign     [class="firefox"           ] 4
 assign     [class="obs"               ] 5
+assign     [class="factorio"          ] 2
+assign     [class="steam_app_2161700" ] 2
 for_window [class="Steam"             ] floating enable
 for_window [title="^Steam Games List$"] floating enable, resize set 20 ppt 50 ppt, $center
 for_window [title="^Steam$"           ] floating enable, resize set 50 ppt 50 ppt, $center

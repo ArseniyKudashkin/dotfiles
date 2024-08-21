@@ -22,6 +22,7 @@ alias \
     1aliases="nvim /home/ikillmylinux/.bashrc" \
     i3cfg="nvim ~/.config/i3/config" \
     gety="yay -S" \
+    sm="~/sm.sh" \
 
 
 set -o vi
