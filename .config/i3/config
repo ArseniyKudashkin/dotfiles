@@ -4,6 +4,8 @@
 
 set $mod Mod4
 floating_modifier $mod
+set $center move absolute position center
+
 
 bar{}
 
@@ -15,7 +17,7 @@ exec --no-startup-id warpd
 exec_always --no-startup-id redshift -x && redshift -O 3500
 #exec_always --no-startup-id xrandr --output HDMI-0 --mode 1920x1080 --same-as DP-0
 exec_always --no-startup-id feh --bg-fill "$HOME/Downloads/another.jpg"
-# exec_always --no-startup-id picom
+exec_always --no-startup-id picom
 exec firefox
 exec obsidian
 exec discord
@@ -31,8 +33,6 @@ bindsym $mod+m exec alacritty --class "musikcube" -e musikcube
 bindsym $mod+w exec ksnip -r
 
 # bindsym $mod+r resize set 1920 1080
-bindsym $mod+r exec i3-msg 'move window absolute position center resize set 1920 1080 border toggle'
-
 
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
@@ -67,16 +67,18 @@ bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 bindsym $mod+f fullscreen toggle
 bindsym $mod+s exec chromium https://speechnotes.co/dictate/
-bindsym $mod+1 workspace number 1
-bindsym $mod+2 workspace number 2
-bindsym $mod+3 workspace number 3
-bindsym $mod+4 workspace number 4
-bindsym $mod+5 workspace number 5
-bindsym $mod+6 workspace number 6
-bindsym $mod+7 workspace number 7
-bindsym $mod+8 workspace number 8
-bindsym $mod+9 workspace number 9
-bindsym $mod+0 workspace number 10
+
+bindsym $mod+1 workspace number 1; bar mode dock
+bindsym $mod+2 workspace number 2; bar mode invisible
+bindsym $mod+3 workspace number 3; bar mode dock
+bindsym $mod+4 workspace number 4; bar mode dock
+bindsym $mod+5 workspace number 5; bar mode dock
+bindsym $mod+6 workspace number 6; bar mode dock
+bindsym $mod+7 workspace number 7; bar mode dock
+bindsym $mod+8 workspace number 8; bar mode dock
+bindsym $mod+9 workspace number 9; bar mode dock
+bindsym $mod+0 workspace number 10; bar mode dock
+
 bindsym $mod+Shift+1 move container to workspace number 1
 bindsym $mod+Shift+2 move container to workspace number 2
 bindsym $mod+Shift+3 move container to workspace number 3
@@ -89,24 +91,25 @@ bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
 # WINDOW RULES
+# $center - move absolute position center
 
-set $center move absolute position center
-
-assign     [class="TelegramDesktop"   ] 9
-assign     [class="discord"           ] 9
-assign     [class="obsidian"          ] 1
-assign     [class="Chromium"          ] 4
-assign     [class="musikcube"         ] 10
-assign     [class="steam"             ] 8
-assign     [class="dota2"             ] 2
-assign     [class="firefox"           ] 4
-assign     [class="obs"               ] 5
-assign     [class="factorio"          ] 2
-assign     [class="steam_app_2161700" ] 2
+for_window [class="TelegramDesktop"   ] move to workspace 9
+for_window [class="discord"           ] move to workspace 9
+for_window [class="obsidian"          ] move to workspace 1
+for_window [class="Chromium"          ] move to workspace 4
+for_window [class="musikcube"         ] move to workspace 10
+for_window [class="steam"             ] move to workspace 8
+for_window [class="dota2"             ] move to workspace 2
+for_window [class="firefox"           ] move to workspace 4
+for_window [class="^obs$"             ] move to workspace 5
+for_window [class="factorio"          ] move to workspace 2
+for_window [title="Список друзей"     ] move to workspace 7
+for_window [title="Friends List"      ] move to workspace 7
+for_window [title="P3R  "             ] move to workspace 2, fullscreen disable, floating disable
 for_window [class="Steam"             ] floating enable
 for_window [title="^Steam Games List$"] floating enable, resize set 20 ppt 50 ppt, $center
 for_window [title="^Steam$"           ] floating enable, resize set 50 ppt 50 ppt, $center
-for_window [title="^Friends List$"    ] floating enable, resize set 15 ppt 80 ppt, move absolute position 0 ppt 0 ppt
+for_window [title="Friends List"      ] floating enable, resize set 15 ppt 80 ppt, move absolute position 0 ppt 0 ppt
 for_window [class="sway-launcher"     ] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 0, $center
 for_window [class="Chromium"          ] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 0, move position mouse
 
