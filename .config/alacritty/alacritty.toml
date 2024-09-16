@@ -1,8 +1,9 @@
 # [env]
-# WINIT_X11_SCALE_FACTOR = "50"
-
+# WINIT_X11_SCALE_FACTOR = "1"
+#
 [font]
-size = 11
+# size = 11
+size = 22
 normal = { family = "Terminess Nerd Font"}
 # bold = { style = "Bold" }
 # italic = { style = "Italic" }

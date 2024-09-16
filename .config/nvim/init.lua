@@ -10,14 +10,11 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.list = true
 vim.opt.swapfile = false
--- vim.g.markdown_folding = 1
 vim.g.markdown_fenced_languages = {'python', 'cpp', 'c', 'lua', 'bash', 'conf', 'sh' }
 vim.opt.clipboard = "unnamedplus"
 vim.opt.fillchars = { eob = " " }
 vim.opt.termguicolors = true
--- vim.opt.conceallevel = 3
-
-
+vim.opt.breakindent = true
 
 require("lazy").setup({
   spec = {
@@ -29,7 +26,10 @@ require("lazy").setup({
         },
         "nvim-tree/nvim-web-devicons",
         "jghauser/mkdir.nvim",
-        "nvim-telescope/telescope.nvim",
+        {
+            "nvim-telescope/telescope.nvim",
+            ft = "markdown"
+        },
         "nvim-lua/popup.nvim",
         "numToStr/Comment.nvim",
         "doctorfree/cheatsheet.nvim",
@@ -60,7 +60,6 @@ require("lazy").setup({
             commit = '03abd2c',
         },
         'mzlogin/vim-markdown-toc',
-        { dir = '~/example.nvim' },
         "folke/zen-mode.nvim",
         {
             "toppair/peek.nvim",
@@ -153,45 +152,45 @@ require"scissors".setup{
 require("luasnip.loaders.from_vscode").lazy_load {
     paths = { "/home/ikillmylinux/.config/nvim/snippets" },
 }
-local cmp = require'cmp'
-cmp.setup({
-    sources = {
-        { name = "luasnip" },
-    },
-    mapping = {
-        ["<CR>"] = cmp.mapping.confirm { select = true },
-        ["<Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item()
-          elseif luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
-          elseif has_words_before() then
-            cmp.complete()
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_prev_item()
-          elseif luasnip.jumpable(-1) then
-            luasnip.jump(-1)
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-        },
-    snippet = {
-        expand = function(args)
-            local luasnip = prequire("luasnip")
-            if not luasnip then
-                return
-            end
-            luasnip.lsp_expand(args.body)
-        end,
-    },
-})
+-- local cmp = require'cmp'
+-- cmp.setup({
+--     sources = {
+--         { name = "luasnip" },
+--     },
+--     mapping = {
+--         ["<CR>"] = cmp.mapping.confirm { select = true },
+--         ["<Tab>"] = cmp.mapping(function(fallback)
+--           if cmp.visible() then
+--             cmp.select_next_item()
+--           elseif luasnip.expand_or_jumpable() then
+--             luasnip.expand_or_jump()
+--           elseif has_words_before() then
+--             cmp.complete()
+--           else
+--             fallback()
+--           end
+--         end, { "i", "s" }),
+--
+--         ["<S-Tab>"] = cmp.mapping(function(fallback)
+--           if cmp.visible() then
+--             cmp.select_prev_item()
+--           elseif luasnip.jumpable(-1) then
+--             luasnip.jump(-1)
+--           else
+--             fallback()
+--           end
+--         end, { "i", "s" }),
+--         },
+--     snippet = {
+--         expand = function(args)
+--             local luasnip = prequire("luasnip")
+--             if not luasnip then
+--                 return
+--             end
+--             luasnip.lsp_expand(args.body)
+--         end,
+--     },
+-- })
 
 vim.keymap.set("n", "<leader>m", open_random_markdown_file)
 
@@ -207,7 +206,7 @@ vim.keymap.set("n", "<F2>", "<cmd>Telekasten rename_note<CR>")
 -- vim.keymap.set("n", "<leader>y", "<cmd>Telekasten yank_notelink<CR>")
 
 vim.keymap.set("n", "<F1>", "<cmd>WhichKey<CR>")
-vim.keymap.set("i", "[[", "<cmd>Telekasten insert_link<CR>")
+-- vim.keymap.set("i", "[[", "<cmd>Telekasten insert_link<CR>")
 
 vim.keymap.set("i", "<C-j>", "<cmd>lua require'luasnip'.jump(1)<CR>")
 vim.keymap.set("i", "<C-k>", "<cmd>lua require'luasnip'.jump(-1)<CR>")
@@ -473,4 +472,6 @@ end, {})
 vim.keymap.set({ "n", "v" }, "<leader>y", "<cmd>CopyLink<cr>", {})
 
 
-require('example')
+
+vim.api.nvim_set_keymap('v', 'y', '"+y', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'p', '"+p', { noremap = true, silent = true })

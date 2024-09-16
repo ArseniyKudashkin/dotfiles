@@ -12,9 +12,11 @@ alias \
 	exercism='~/bin/exercism' \
 	es='exercism submit *.sh' \
 	tsk='nvim main.sh' \
+    run='./main.sh' \
 	gits='git status --untracked-files=no' \
-	dm='~/dm.sh' \
-	ms='~/ms.sh' \
+	dm='~/sync/scripts/dm.sh' \
+	ms='~/sync/scripts/ms.sh' \
+    sm="~/sync/scripts/sm.sh" \
     vis="sudo -E nvim" \
     vin="nvim ~/openNotes/Ar/main.md" \
     vic="nvim ~/.config/nvim/init.lua" \
@@ -22,7 +24,7 @@ alias \
     1aliases="nvim /home/ikillmylinux/.bashrc" \
     i3cfg="nvim ~/.config/i3/config" \
     gety="yay -S" \
-    sm="~/sm.sh" \
+    ref="sudo reflector --latest 20 --sort rate --save /etc/pacman.d/mirrorlist && sudo pacman -Syyuu" \
 
 
 set -o vi
