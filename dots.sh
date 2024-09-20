@@ -14,7 +14,12 @@ paths=(
     "$HOME/.config/nvim/snippets/markdown.json"
     "$HOME/.config/nvim/snippets/package.json"
     "$HOME/.config/picom/picom.conf"
-
+    "$HOME/.config/waybar/config.jsonc"
+    "/etc/mkinitcpio.conf"
+    "$HOME/.bash_profile"
+    "$HOME/.config/musikcube/settings.json"
+    "$HOME/.config/scripts/ms.conf"
+    "$HOME/.config/electron-flags.conf"
 )
 
 main()
