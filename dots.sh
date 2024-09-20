@@ -20,6 +20,11 @@ paths=(
     "$HOME/.config/musikcube/settings.json"
     "$HOME/.config/scripts/ms.conf"
     "$HOME/.config/electron-flags.conf"
+    "$HOME/.config/gtk-3.0/settings.ini"
+    "$HOME/.gtkrc-2.0"
+    "$HOME/.icons/default/index.theme"
+    "$HOME/.config/xsettingsd/xsettingsd.conf"
+    "$HOME/.config/qt6ct/qt6ct.conf"
 )
 
 main()
