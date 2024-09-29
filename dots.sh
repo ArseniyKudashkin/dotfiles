@@ -16,6 +16,7 @@ paths=(
     "$HOME/.config/picom/picom.conf"
     "$HOME/.config/waybar/config.jsonc"
     "/etc/mkinitcpio.conf"
+    "/etc/locale.gen"
     "$HOME/.bash_profile"
     "$HOME/.config/musikcube/settings.json"
     "$HOME/.config/scripts/ms.conf"
@@ -25,6 +26,8 @@ paths=(
     "$HOME/.icons/default/index.theme"
     "$HOME/.config/xsettingsd/xsettingsd.conf"
     "$HOME/.config/qt6ct/qt6ct.conf"
+    "$HOME/.config/waybar/style.css"
+    "$HOME/.config/hypr/xdph.conf"
 )
 
 main()

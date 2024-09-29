@@ -20,11 +20,12 @@ alias \
     vis="sudo -E nvim" \
     vin="nvim ~/openNotes/Ar/main.md" \
     vic="nvim ~/.config/nvim/init.lua" \
-    1cdnvim="cd /home/ikillmylinux/.config/nvim/" \
-    1aliases="nvim /home/ikillmylinux/.bashrc" \
+    cdnvim="cd /home/ikillmylinux/.config/nvim/" \
+    aliases="nvim /home/ikillmylinux/.bashrc" \
     i3cfg="nvim ~/.config/i3/config" \
     gety="yay -S" \
     ref="sudo reflector --latest 20 --sort rate --save /etc/pacman.d/mirrorlist && sudo pacman -Syyuu" \
+    cal="export LC_TIME=ru_RU.UTF-8 && cal -3 && unset LC_TIME" \
 
 
 set -o vi
