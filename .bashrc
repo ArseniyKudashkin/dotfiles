@@ -11,12 +11,10 @@ alias \
 	get='sudo pacman -S' \
 	exercism='~/bin/exercism' \
 	es='exercism submit *.sh' \
-	tsk='nvim main.sh' \
-    run='./main.sh' \
 	gits='git status --untracked-files=no' \
 	dm='~/sync/scripts/dm.sh' \
 	ms='~/sync/scripts/ms.sh' \
-    sm="~/sync/scripts/sm.sh" \
+    sm="sudo -E ~/sync/scripts/sm.sh" \
     vis="sudo -E nvim" \
     vin="nvim ~/openNotes/Ar/main.md" \
     vic="nvim ~/.config/nvim/init.lua" \
@@ -26,7 +24,10 @@ alias \
     gety="yay -S" \
     ref="sudo reflector --latest 20 --sort rate --save /etc/pacman.d/mirrorlist && sudo pacman -Syyuu" \
     cal="export LC_TIME=ru_RU.UTF-8 && cal -3 && unset LC_TIME" \
-
+    wip="cd $HOME/sync/scripts/wip && nvim main.sh" \
+	tsk='nvim main.sh' \
+    run='./main.sh' \
+    wkill="hyprctl kill" \
 
 set -o vi
 PS1='[\u@\h \W]\$ '

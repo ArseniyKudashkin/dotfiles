@@ -97,12 +97,6 @@ require("cheatsheet").setup({
     include_only_installed_plugins = false,
 })
 
-require('codestats-nvim').setup({
-    token = "SFMyNTY.WlhabGNubGtZWGxwYTJsc2JHMTViR2x1ZFhnPSMjTWpNeE56Yz0.u-K565NaEapeZ7km1TvjUFlyOX7q9beFuIzrNlVqv8o",
-    endpoint = "https://codestats.net",
-    interval = 60,
-})
-
 require("bookmarks").setup({})
 require("nvim-tree").setup({
   sort = {

@@ -1,5 +1,5 @@
 {
-    "layer": "bottom", // Waybar at top layer
+    "layer": "top", // Waybar at top layer
     "position": "bottom", // Waybar position (top|bottom|left|right)
     "name": "bar",
     "height": 24, // Waybar height (to be removed for auto height)
@@ -9,6 +9,8 @@
     "modules-left": [
         "hyprland/workspaces"
     ],
+    "mode" : "hide",
+    "exclusive" : "false",
     "modules-right": [
         "tray"
     ],
