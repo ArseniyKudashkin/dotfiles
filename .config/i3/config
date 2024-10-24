@@ -65,7 +65,6 @@ bindsym $mod+Right focus right
 bindsym $mod+Tab workspace next; bar mode dock
 bindsym $mod+Shift+Tab workspace prev; bar mode dock
 bindsym $mod+f fullscreen toggle
-bindsym $mod+s exec chromium https://speechnotes.co/dictate/
 
 
 bindsym $mod+bracketleft exec playerctl previous
@@ -120,4 +119,4 @@ for_window [title="^Steam Games List$"] floating enable, resize set 20 ppt 50 pp
 for_window [title="^Steam$"           ] floating enable, resize set 50 ppt 50 ppt, $center
 for_window [title="Friends List"      ] floating enable, resize set 15 ppt 80 ppt, move absolute position 0 ppt 0 ppt
 for_window [class="sway-launcher"     ] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 0, $center
-for_window [class="Chromium"          ] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 0, move position mouse
+# for_window [class="Chromium"          ] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 0, move position mouse
