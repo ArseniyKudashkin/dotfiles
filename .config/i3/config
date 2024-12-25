@@ -31,6 +31,8 @@ bindsym $mod+z exec obsidian
 bindsym $mod+b exec firefox
 bindsym $mod+m exec alacritty --class "musikcube" -e musikcube
 bindsym $mod+w exec ksnip -r
+bindsym $mod+s exec alacritty -e ~/sync/scripts/gm.sh
+bindsym $mod+a exec alacritty -e ~/sync/scripts/links.sh
 
 # bindsym $mod+r resize set 1920 1080
 
